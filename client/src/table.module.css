@@ -1,0 +1,101 @@
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.table {
+  width: 100%;
+  border-radius: 25px;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #0b9912, #2c44cf);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 33px 30px;
+}
+
+.table {
+  width: 100%;
+}
+
+.table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 100px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.table * {
+  position: relative;
+}
+
+.table td{
+    border-radius: 25px;
+}
+.table th {
+  padding-left: 8px;
+}
+
+table thead tr {
+  height: 60px;
+}
+
+.table tbody tr {
+  height: 50px;
+}
+
+.table tbody tr:last-child {
+  border: 0;
+}
+
+.table td,
+.table th {
+  text-align: left;
+}
+
+.table td.l,
+.table th.l {
+  text-align: right;
+}
+
+.table td.c,
+.table th.c {
+  text-align: center;
+}
+
+.table td.r,
+.table th.r {
+  text-align: center;
+}
+
+th {
+  font-family: OpenSans-Regular;
+  font-size: 18px;
+  color: #000000;
+  line-height: 1.2;
+  font-weight: unset;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+tbody tr{
+  font-family: OpenSans-Regular;
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+  line-height: 1.2;
+  font-weight: unset;
+  text-align: center;
+}
+
+tbody tr:hover {
+  color: #555;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}

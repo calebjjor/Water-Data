@@ -1,0 +1,15 @@
+/* Tab.module.css */
+.tab {
+    font-family: 'Nunito';
+    font-size: 22px;
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-right: 10px;
+    color: #00a2ff;
+  }
+  
+  .tab:hover {
+    color: #160094;
+  }
+  
