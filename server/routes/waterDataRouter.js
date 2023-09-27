@@ -36,4 +36,61 @@ sampleTypesRouter.get('/:clientName/:sampleType', async (req, res) => {
   }
 });
 
+sampleTypesRouter.get('/:clientName/:sampleType/:dataField', async (req, res) => {
+  try {
+    const clientName = req.params.clientName;
+    const sampleType = req.params.sampleType;
+    const dataField = req.params.dataField;
+
+    const data = await WaterSample.find({ Client: clientName, Sample: sampleType });
+
+    if (data.length > 0){
+      const specifiedData = data.map((item) => item[dataField]);
+      res.json(specifiedData);
+    }
+    else {
+      res.status(404).send('No data found for the specified criteria.');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+sampleTypesRouter.get('/:clientName/:sampleType/:dataField/summary', async (req, res) => {
+  try {
+    const clientName = req.params.clientName;
+    const sampleType = req.params.sampleType;
+    const dataField = req.params.dataField;
+
+    const data = await WaterSample.aggregate([
+      {
+        $match: {
+          Client: clientName,
+          Sample: sampleType,
+          [dataField]: { $type: 'number' },
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          Average: { $avg: `$${dataField}` },
+          Min: { $min: `$${dataField}` },
+          Max: { $max: `$${dataField}` },
+        },
+      },
+    ]);
+
+    if (data.length > 0) {
+      res.json(data[0]);
+    } else {
+      res.status(404).send('No data found for the specified criteria.');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
 export default sampleTypesRouter;
